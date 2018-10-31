@@ -18,7 +18,7 @@ class DockingStation
   end
 
   def recieves_bike(bike)
-    if @bikes.length >= 20
+    if full?
       false
     else
       @bikes.push(bike)
@@ -32,4 +32,9 @@ class DockingStation
       false
     end
   end
+
+  private
+  def full?
+    @bikes.length == 20 ? true : false
+  end   
 end
