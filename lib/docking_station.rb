@@ -18,7 +18,7 @@ class DockingStation
   end
 
   def recieves_bike(bike)
-    if available?
+    if @bikes.length >= 20
       false
     else
       @bikes.push(bike)
