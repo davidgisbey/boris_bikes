@@ -1,14 +1,27 @@
+require_relative './bike.rb'
+
 class DockingStation
   attr_reader :bikes
   attr_reader :location
+
   def initialize(location="default_location")
-    @bikes = Array.new
+    @bikes = []
     @location = location
   end
+
   def release_bike
-     return Bike.new
+    Bike.new
   end
+
   def recieves_bike(bike)
     @bikes.push(bike)
+  end
+
+  def available?
+    if @bikes.length > 0
+      true
+    else
+      false
+    end
   end
 end

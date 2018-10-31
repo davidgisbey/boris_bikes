@@ -1,8 +1,15 @@
 class Bike
-  def is_working
-    return true
+  attr_accessor :condition
+
+  def initialize
+    @condition = 'good'
   end
-  def return_bike(station)
-    station.recieves_bike(self)
+
+  def is_working
+    if @condition == 'good'
+      true
+    else
+      false
+    end
   end
 end
