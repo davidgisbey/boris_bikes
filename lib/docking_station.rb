@@ -10,7 +10,11 @@ class DockingStation
   end
 
   def release_bike
-    Bike.new
+    if available?
+      @bikes.delete_at(0)
+    else
+      false
+    end
   end
 
   def recieves_bike(bike)

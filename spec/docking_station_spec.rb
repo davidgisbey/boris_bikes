@@ -8,6 +8,8 @@ describe DockingStation do
   end
    it "releases bike and bike works" do
      ds = DockingStation.new
+     bike = Bike.new
+     ds.recieves_bike(bike)
      bike1 = ds.release_bike
      expect(bike1.is_working).to eq true
   end
@@ -19,5 +21,14 @@ describe DockingStation do
      bike = Bike.new
      ds.recieves_bike(bike)
      expect(ds.available?).to eq true
+  end
+  it "doesn't release when docking station is empty" do
+    ds = DockingStation.new
+    expect(ds.release_bike).to eq false
+    ds_1 = DockingStation.new
+    bike = Bike.new
+    ds_1.recieves_bike(bike)
+    bike_2 = ds_1.release_bike
+    expect(bike_2.instance_of? Bike).to eq true
   end
 end
