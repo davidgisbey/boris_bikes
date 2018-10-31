@@ -18,7 +18,11 @@ class DockingStation
   end
 
   def recieves_bike(bike)
-    @bikes.push(bike)
+    if available?
+      false
+    else
+      @bikes.push(bike)
+    end
   end
 
   def available?

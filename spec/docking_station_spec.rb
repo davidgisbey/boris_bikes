@@ -31,4 +31,11 @@ describe DockingStation do
     bike_2 = ds_1.release_bike
     expect(bike_2.instance_of? Bike).to eq true
   end
+  it "doesn't receive bike if docking station is full" do
+    ds = DockingStation.new
+    bike = Bike.new
+    bike_2 = Bike.new
+    ds.recieves_bike(bike)
+    expect(ds.recieves_bike(bike_2)).to eq false
+  end
 end
