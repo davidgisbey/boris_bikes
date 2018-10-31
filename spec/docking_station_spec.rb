@@ -38,8 +38,9 @@ describe DockingStation do
     expect{ds.recieve_bike(bike)}.to raise_exception
   end
   it "checks if capacity is 20" do
-    ds = DockingStation.new
-    DockingStation::DEFAULT_CAPACITY.times {ds.recieves_bike(Bike.new)}
-    expect(ds.bikes.length). to eq DockingStation::DEFAULT_CAPACITY
+    ds = DockingStation.new()
+    expect(ds.capacity). to eq DockingStation::DEFAULT_CAPACITY
+    ds_1 = DockingStation.new(15)
+    expect(ds_1.capacity).to eq 15
   end
 end

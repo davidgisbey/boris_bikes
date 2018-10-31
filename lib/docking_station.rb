@@ -2,12 +2,12 @@ require_relative './bike.rb'
 
 class DockingStation
   attr_reader :bikes
-  attr_reader :location
+  attr_reader :capacity
   DEFAULT_CAPACITY = 20
 
-  def initialize(location="default_location")
+  def initialize(capacity = DEFAULT_CAPACITY)
     @bikes = []
-    @location = location
+    @capacity = capacity
   end
 
   def release_bike
@@ -36,6 +36,6 @@ class DockingStation
 
   private
   def full?
-    @bikes.length == DEFAULT_CAPACITY ? true : false
+    @bikes.length == @capacity ? true : false
   end
 end
