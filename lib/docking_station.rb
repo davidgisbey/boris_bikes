@@ -13,7 +13,7 @@ class DockingStation
     if available?
       @bikes.delete_at(0)
     else
-      false
+      raise Exception.new("No bikes are available.")
     end
   end
 

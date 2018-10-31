@@ -24,7 +24,7 @@ describe DockingStation do
   end
   it "doesn't release when docking station is empty" do
     ds = DockingStation.new
-    expect(ds.release_bike).to eq false
+    expect{ds.release_bike}.to raise_exception
     ds_1 = DockingStation.new
     bike = Bike.new
     ds_1.recieves_bike(bike)
