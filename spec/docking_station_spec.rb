@@ -33,13 +33,13 @@ describe DockingStation do
   end
   it "doesn't receive bike if docking station is full" do
     ds = DockingStation.new
-    20.times {ds.recieves_bike(Bike.new)}
+    DockingStation::DEFAULT_CAPACITY.times {ds.recieves_bike(Bike.new)}
     bike = Bike.new
     expect{ds.recieve_bike(bike)}.to raise_exception
   end
   it "checks if capacity is 20" do
     ds = DockingStation.new
-    20.times {ds.recieves_bike(Bike.new)}
-    expect(ds.bikes.length). to eq 20
+    DockingStation::DEFAULT_CAPACITY.times {ds.recieves_bike(Bike.new)}
+    expect(ds.bikes.length). to eq DockingStation::DEFAULT_CAPACITY
   end
 end
