@@ -3,10 +3,13 @@ require_relative './bike.rb'
 class DockingStation
   attr_reader :bikes
   attr_reader :capacity
+  attr_reader :broken_bikes
+  
   DEFAULT_CAPACITY = 20
 
   def initialize(capacity = DEFAULT_CAPACITY)
     @bikes = []
+    @broken_bikes = []
     @capacity = capacity
   end
 
@@ -20,22 +23,26 @@ class DockingStation
 
   def recieves_bike(bike)
     if full?
-      false
+      raise Exception.new("At full capacity.")
     else
-      @bikes.push(bike)
+      if bike.is_working
+        @bikes.push(bike)
+      else
+        @broken_bikes.push(bike)
+      end
     end
   end
 
   def available?
     if @bikes.length > 0
       true
-    else
+    elsif
       false
     end
   end
 
   private
   def full?
-    @bikes.length == @capacity ? true : false
+    @bikes.length + @broken_bikes.length == @capacity ? true : false
   end
 end

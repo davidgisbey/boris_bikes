@@ -12,4 +12,8 @@ class Bike
       false
     end
   end
+
+  def has_been_broken
+    @condition = 'broken'
+  end
 end

@@ -35,12 +35,19 @@ describe DockingStation do
     ds = DockingStation.new
     DockingStation::DEFAULT_CAPACITY.times {ds.recieves_bike(Bike.new)}
     bike = Bike.new
-    expect{ds.recieve_bike(bike)}.to raise_exception
+    expect{ds.recieves_bike(bike)}.to raise_exception
   end
   it "checks if capacity is 20" do
     ds = DockingStation.new()
     expect(ds.capacity). to eq DockingStation::DEFAULT_CAPACITY
     ds_1 = DockingStation.new(15)
     expect(ds_1.capacity).to eq 15
+  end
+  it "user can report bike when broken" do
+    bike = Bike.new
+    ds = DockingStation.new
+    bike.has_been_broken
+    ds.recieves_bike(bike)
+    expect(ds.broken_bikes.size).to eq 1
   end
 end
