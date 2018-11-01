@@ -4,7 +4,7 @@ class DockingStation
   attr_reader :bikes
   attr_reader :capacity
   attr_reader :broken_bikes
-  
+
   DEFAULT_CAPACITY = 20
 
   def initialize(capacity = DEFAULT_CAPACITY)
@@ -17,11 +17,11 @@ class DockingStation
     if available?
       @bikes.delete_at(0)
     else
-      raise Exception.new("No bikes are available.")
+      raise Exception.new("No working bikes are available.")
     end
   end
 
-  def recieves_bike(bike)
+  def receives_bike(bike)
     if full?
       raise Exception.new("At full capacity.")
     else
