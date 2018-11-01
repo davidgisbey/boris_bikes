@@ -16,4 +16,8 @@ class Bike
   def has_been_broken
     @condition = 'broken'
   end
+
+  def repair_bike
+    @condition = 'good'
+  end 
 end
